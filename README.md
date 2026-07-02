@@ -1,6 +1,6 @@
 # AI 智能客服系统
 
-本工程是“AI 智能客服系统”的初始代码交付，依据已有需求、概要设计和详细设计文档建立。当前版本采用零依赖 Node.js HTTP 服务模拟 Gateway 与核心业务服务，前端提供可运行的客服工作台原型；后续可按设计文档拆分为 FastAPI 微服务，并接入 MySQL、Redis、ChromaDB 与 DashScope。
+本工程是“AI 智能客服系统”的初始代码交付，依据已有需求、概要设计和详细设计文档建立。当前版本采用零依赖 Python 标准库 HTTP 服务模拟 Gateway 与核心业务服务，前端提供可运行的客服工作台原型；后续可按设计文档拆分为 FastAPI 微服务，并接入 MySQL、Redis、ChromaDB 与 DashScope。
 
 ## 功能范围
 
@@ -12,8 +12,8 @@
 
 ## 技术方案
 
-- 运行环境：Node.js 18+
-- 服务端：Node.js 原生 HTTP 模块
+- 运行环境：Python 3.11+
+- 服务端：Python 标准库 `http.server`
 - 前端：HTML、CSS、原生 JavaScript
 - 演示数据：`data/app-data.json`
 - 目标数据库：MySQL 8.0，详见 `docs/database-design.md`
@@ -28,13 +28,13 @@
 ├── docs/                  # 数据库设计文档、接口文档初版
 ├── public/                # 客服工作台前端页面
 ├── src/                   # 初始工程服务端代码
-└── tests/                 # Node.js 接口测试
+└── tests/                 # Python 接口测试
 ```
 
 ## 快速启动
 
 ```bash
-npm start
+python3 src/server.py
 ```
 
 启动后访问：
@@ -47,7 +47,7 @@ npm start
 ## 测试
 
 ```bash
-npm test
+python3 -m unittest discover -s tests
 ```
 
 ## 演示账号

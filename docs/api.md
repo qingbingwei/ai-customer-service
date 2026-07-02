@@ -614,6 +614,7 @@ Content-Type: application/json
 
 | 项目 | 初始工程 | 正式开发目标 |
 | --- | --- | --- |
+| 后端语言 | Python 标准库 HTTP 服务 | Python 3.12+ / FastAPI |
 | 鉴权 | mock token / x-user-id | JWT + Redis 黑名单 |
 | 密码 | mock hash | bcrypt |
 | 数据库 | JSON 文件演示数据 | MySQL 8.0 |

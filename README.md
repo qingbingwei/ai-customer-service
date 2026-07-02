@@ -12,8 +12,8 @@
 
 ## 技术方案
 
-- 运行环境：Python 3.11+
-- 服务端：Python 标准库 `http.server`
+- 运行环境：设计目标为 Python 3.12+，当前零依赖实现兼容 Python 3.11+
+- 服务端：Python 标准库 `http.server`，后续可按设计拆分为 FastAPI 微服务
 - 前端：HTML、CSS、原生 JavaScript
 - 演示数据：`data/app-data.json`
 - 目标数据库：MySQL 8.0，详见 `docs/database-design.md`

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI 智能客服系统</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">AI</div>
+          <div>
+            <h1>智能客服</h1>
+            <p>RAG 客服工作台</p>
+          </div>
+        </div>
+        <button class="primary-action" id="new-session-btn" type="button">＋ 新会话</button>
+        <nav class="session-list" id="session-list" aria-label="会话列表"></nav>
+      </aside>
+
+      <main class="workspace">
+        <section class="chat-panel">
+          <header class="panel-header">
+            <div>
+              <span class="eyebrow">当前会话</span>
+              <h2 id="session-title">加载中</h2>
+            </div>
+            <div class="status-pill" id="connection-status">已连接</div>
+          </header>
+
+          <div class="message-list" id="message-list"></div>
+
+          <form class="composer" id="chat-form">
+            <textarea id="message-input" rows="2" placeholder="输入客户问题，例如：扫地机器人无法开机怎么办？"></textarea>
+            <button type="submit" aria-label="发送消息">发送</button>
+          </form>
+        </section>
+
+        <aside class="inspector">
+          <section class="metric-row" aria-label="系统状态">
+            <div>
+              <strong id="kb-count">0</strong>
+              <span>知识库</span>
+            </div>
+            <div>
+              <strong id="doc-count">0</strong>
+              <span>文档</span>
+            </div>
+          </section>
+
+          <section class="side-section">
+            <div class="section-title">
+              <h3>知识库</h3>
+              <button id="refresh-kb-btn" type="button" title="刷新">↻</button>
+            </div>
+            <div id="knowledge-list" class="knowledge-list"></div>
+          </section>
+
+          <section class="side-section">
+            <div class="section-title">
+              <h3>来源引用</h3>
+            </div>
+            <div id="source-list" class="source-list"></div>
+          </section>
+        </aside>
+      </main>
+    </div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

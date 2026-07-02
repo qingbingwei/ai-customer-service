@@ -1,0 +1,261 @@
+{
+  "users": [
+    {
+      "user_id": 1,
+      "username": "zhangsan",
+      "phone": "13800138000",
+      "email": "zhangsan@example.com",
+      "password": "Pass1234",
+      "password_hash": "$mock$96e5af84de0d45d651e58c4fbd6c2161",
+      "role": "user",
+      "status": 1,
+      "login_failed_count": 0,
+      "locked_until": null,
+      "created_at": "2026-07-01T10:00:00.000Z",
+      "updated_at": "2026-07-01T10:00:00.000Z",
+      "last_login_at": "2026-07-01T14:00:00.000Z"
+    },
+    {
+      "user_id": 2,
+      "username": "admin",
+      "phone": "13800000000",
+      "email": "admin@example.com",
+      "password": "admin123",
+      "password_hash": "$mock$240be518fabd2724d1d60d102305d80a",
+      "role": "admin",
+      "status": 1,
+      "login_failed_count": 0,
+      "locked_until": null,
+      "created_at": "2026-07-01T09:00:00.000Z",
+      "updated_at": "2026-07-01T09:00:00.000Z",
+      "last_login_at": "2026-07-01T13:30:00.000Z"
+    }
+  ],
+  "knowledge_bases": [
+    {
+      "kb_id": 1,
+      "name": "默认客服知识库",
+      "description": "覆盖售后、保修、发票、物流和常见故障排查的演示知识库。",
+      "status": "enabled",
+      "document_count": 2,
+      "created_by": 2,
+      "created_at": "2026-07-01T10:10:00.000Z",
+      "updated_at": "2026-07-01T10:30:00.000Z"
+    }
+  ],
+  "documents": [
+    {
+      "document_id": 1,
+      "kb_id": 1,
+      "file_name": "扫地机器人故障排查手册.txt",
+      "file_type": "txt",
+      "file_size": 2048,
+      "file_path": "uploads/kb_1/扫地机器人故障排查手册.txt",
+      "content_hash": "d0fda08a6e2410ab7f55fb67484f9810651dc10857eeb476678ef0fcd2c62a41",
+      "status": "ready",
+      "chunk_count": 3,
+      "error_message": null,
+      "created_by": 2,
+      "created_at": "2026-07-01T10:20:00.000Z",
+      "updated_at": "2026-07-01T10:25:00.000Z",
+      "processed_at": "2026-07-01T10:25:00.000Z"
+    },
+    {
+      "document_id": 2,
+      "kb_id": 1,
+      "file_name": "订单售后政策.md",
+      "file_type": "txt",
+      "file_size": 1536,
+      "file_path": "uploads/kb_1/订单售后政策.md",
+      "content_hash": "277c7c639dcd6c4fa1e653f2cb49eae9de7db3603272d2d3a3d345792c45852d",
+      "status": "ready",
+      "chunk_count": 2,
+      "error_message": null,
+      "created_by": 2,
+      "created_at": "2026-07-01T10:26:00.000Z",
+      "updated_at": "2026-07-01T10:30:00.000Z",
+      "processed_at": "2026-07-01T10:30:00.000Z"
+    }
+  ],
+  "document_chunks": [
+    {
+      "chunk_id": "1-0",
+      "kb_id": 1,
+      "document_id": 1,
+      "chunk_index": 0,
+      "content": "扫地机器人无法开机时，请先检查电源适配器是否正常连接，确认充电底座指示灯是否点亮。若机器长时间未使用，请至少充电30分钟后再尝试开机。",
+      "embedding": [
+        0.11,
+        0.36,
+        0.72,
+        0.21,
+        0.83,
+        0.34,
+        0.18,
+        0.57
+      ],
+      "metadata": {
+        "source": "扫地机器人故障排查手册.txt",
+        "file_name": "扫地机器人故障排查手册.txt",
+        "document_id": 1,
+        "chunk_index": 0
+      }
+    },
+    {
+      "chunk_id": "1-1",
+      "kb_id": 1,
+      "document_id": 1,
+      "chunk_index": 1,
+      "content": "设备工作中异常停止时，请检查尘盒、水箱和滚刷是否安装到位，并清理主刷两侧缠绕物。重新安装后长按电源键5秒重启设备。",
+      "embedding": [
+        0.28,
+        0.14,
+        0.61,
+        0.74,
+        0.49,
+        0.19,
+        0.88,
+        0.43
+      ],
+      "metadata": {
+        "source": "扫地机器人故障排查手册.txt",
+        "file_name": "扫地机器人故障排查手册.txt",
+        "document_id": 1,
+        "chunk_index": 1
+      }
+    },
+    {
+      "chunk_id": "1-2",
+      "kb_id": 1,
+      "document_id": 1,
+      "chunk_index": 2,
+      "content": "设备保修期为自签收日起12个月。人为损坏、进水、私自拆修不在免费保修范围内。申请保修时需提供订单号、故障视频和设备序列号。",
+      "embedding": [
+        0.53,
+        0.31,
+        0.27,
+        0.65,
+        0.44,
+        0.72,
+        0.16,
+        0.91
+      ],
+      "metadata": {
+        "source": "扫地机器人故障排查手册.txt",
+        "file_name": "扫地机器人故障排查手册.txt",
+        "document_id": 1,
+        "chunk_index": 2
+      }
+    },
+    {
+      "chunk_id": "2-0",
+      "kb_id": 1,
+      "document_id": 2,
+      "chunk_index": 0,
+      "content": "退款申请需在签收后7天内提交，商品应保持配件齐全且不影响二次销售。质量问题退货由商家承担运费，非质量问题由用户承担运费。",
+      "embedding": [
+        0.67,
+        0.21,
+        0.45,
+        0.15,
+        0.93,
+        0.38,
+        0.49,
+        0.25
+      ],
+      "metadata": {
+        "source": "订单售后政策.md",
+        "file_name": "订单售后政策.md",
+        "document_id": 2,
+        "chunk_index": 0
+      }
+    },
+    {
+      "chunk_id": "2-1",
+      "kb_id": 1,
+      "document_id": 2,
+      "chunk_index": 1,
+      "content": "电子发票可在订单完成后24小时内申请。发票抬头、税号和邮箱提交后不可频繁修改，如需重开发票请联系人工客服。",
+      "embedding": [
+        0.24,
+        0.47,
+        0.71,
+        0.55,
+        0.32,
+        0.64,
+        0.39,
+        0.81
+      ],
+      "metadata": {
+        "source": "订单售后政策.md",
+        "file_name": "订单售后政策.md",
+        "document_id": 2,
+        "chunk_index": 1
+      }
+    }
+  ],
+  "sessions": [
+    {
+      "session_id": 100,
+      "user_id": 1,
+      "kb_id": 1,
+      "title": "扫地机器人故障咨询",
+      "status": 1,
+      "created_at": "2026-07-01T14:00:00.000Z",
+      "updated_at": "2026-07-01T14:03:00.000Z",
+      "last_message_at": "2026-07-01T14:03:00.000Z"
+    }
+  ],
+  "messages": [
+    {
+      "message_id": 1000,
+      "session_id": 100,
+      "role": "user",
+      "content": "扫地机器人无法开机怎么办？",
+      "sources": null,
+      "token_count": 13,
+      "latency_ms": 0,
+      "model_name": null,
+      "created_at": "2026-07-01T14:01:00.000Z"
+    },
+    {
+      "message_id": 1001,
+      "session_id": 100,
+      "role": "assistant",
+      "content": "根据知识库内容，建议先检查电源适配器、充电底座指示灯，并在长时间未使用后至少充电30分钟再尝试开机。",
+      "sources": [
+        {
+          "document_id": 1,
+          "doc_name": "扫地机器人故障排查手册.txt",
+          "score": 0.93,
+          "snippet": "扫地机器人无法开机时，请先检查电源适配器是否正常连接..."
+        }
+      ],
+      "token_count": 54,
+      "latency_ms": 220,
+      "model_name": "qwen-plus-mock",
+      "created_at": "2026-07-01T14:03:00.000Z"
+    }
+  ],
+  "operation_logs": [
+    {
+      "log_id": 1,
+      "operator_id": 2,
+      "action": "document.upload",
+      "detail": {
+        "kb_id": 1,
+        "document_id": 1,
+        "file_name": "扫地机器人故障排查手册.txt"
+      },
+      "created_at": "2026-07-01T10:20:00.000Z"
+    }
+  ],
+  "sequences": {
+    "user_id": 3,
+    "kb_id": 2,
+    "document_id": 3,
+    "session_id": 101,
+    "message_id": 1002,
+    "log_id": 2
+  }
+}

@@ -4,67 +4,149 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AI 智能客服系统</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
     <div class="app-shell">
-      <aside class="sidebar">
+      <aside class="rail" aria-label="主导航">
         <div class="brand">
-          <div class="brand-mark">AI</div>
+          <div class="brand-mark" aria-hidden="true">AI</div>
           <div>
             <h1>智能客服</h1>
-            <p>RAG 客服工作台</p>
+            <span>RAG 控制台</span>
           </div>
         </div>
-        <button class="primary-action" id="new-session-btn" type="button">＋ 新会话</button>
-        <nav class="session-list" id="session-list" aria-label="会话列表"></nav>
+
+        <nav class="main-nav">
+          <button class="nav-item active" type="button" data-panel="conversation">对话工作台</button>
+          <button class="nav-item" type="button" data-panel="knowledge">知识库管理</button>
+          <button class="nav-item" type="button" data-panel="monitor">运行监控</button>
+        </nav>
+
+        <section class="operator-card" aria-label="当前账号">
+          <span class="section-kicker">当前账号</span>
+          <strong id="operator-name">加载中</strong>
+          <small id="operator-role">--</small>
+        </section>
+
+        <button class="primary-action" id="new-session-btn" type="button">新建会话</button>
       </aside>
 
       <main class="workspace">
-        <section class="chat-panel">
-          <header class="panel-header">
-            <div>
-              <span class="eyebrow">当前会话</span>
-              <h2 id="session-title">加载中</h2>
-            </div>
-            <div class="status-pill" id="connection-status">已连接</div>
-          </header>
+        <header class="topbar">
+          <div>
+            <span class="section-kicker">AI 智能客服系统</span>
+            <h2>客服运营 Demo</h2>
+          </div>
+          <div class="runtime-strip" aria-label="服务状态">
+            <span id="service-status" class="status-chip success">服务在线</span>
+            <span>模型：qwen-plus-mock</span>
+            <span id="latency-label">延迟 -- ms</span>
+          </div>
+        </header>
 
-          <div class="message-list" id="message-list"></div>
-
-          <form class="composer" id="chat-form">
-            <textarea id="message-input" rows="2" placeholder="输入客户问题，例如：扫地机器人无法开机怎么办？"></textarea>
-            <button type="submit" aria-label="发送消息">发送</button>
-          </form>
+        <section class="metrics-grid" aria-label="关键指标">
+          <article class="metric-card">
+            <span>会话数</span>
+            <strong id="metric-sessions">0</strong>
+            <small>当前用户有效会话</small>
+          </article>
+          <article class="metric-card">
+            <span>知识库</span>
+            <strong id="metric-kb">0</strong>
+            <small>管理员可用知识库</small>
+          </article>
+          <article class="metric-card">
+            <span>已入库文档</span>
+            <strong id="metric-docs">0</strong>
+            <small>ready 状态文档</small>
+          </article>
+          <article class="metric-card">
+            <span>AI 回答</span>
+            <strong id="metric-answers">0</strong>
+            <small>当前会话累计</small>
+          </article>
         </section>
 
-        <aside class="inspector">
-          <section class="metric-row" aria-label="系统状态">
-            <div>
-              <strong id="kb-count">0</strong>
-              <span>知识库</span>
+        <section class="content-grid">
+          <aside class="sessions-panel panel" aria-label="会话列表">
+            <div class="panel-heading">
+              <div>
+                <span class="section-kicker">Conversation</span>
+                <h3>会话</h3>
+              </div>
+              <button class="ghost-button" id="refresh-sessions-btn" type="button">刷新</button>
             </div>
-            <div>
-              <strong id="doc-count">0</strong>
-              <span>文档</span>
+            <div class="session-list" id="session-list"></div>
+          </aside>
+
+          <section class="chat-panel panel" aria-label="对话区域">
+            <div class="panel-heading chat-heading">
+              <div>
+                <span class="section-kicker">当前会话</span>
+                <h3 id="session-title">加载中</h3>
+              </div>
+              <span id="connection-status" class="status-chip success">已连接</span>
             </div>
+
+            <div class="message-list" id="message-list" aria-live="polite"></div>
+
+            <div class="quick-prompts" aria-label="快捷问题">
+              <button type="button" data-prompt="扫地机器人无法开机怎么办？">无法开机</button>
+              <button type="button" data-prompt="怎么申请电子发票？">发票申请</button>
+              <button type="button" data-prompt="设备保修需要哪些材料？">保修材料</button>
+            </div>
+
+            <form class="composer" id="chat-form">
+              <label for="message-input">客户问题</label>
+              <div class="composer-row">
+                <textarea id="message-input" rows="2" placeholder="输入客户问题"></textarea>
+                <button type="submit">发送</button>
+              </div>
+              <p id="composer-feedback" class="form-feedback" role="status"></p>
+            </form>
           </section>
 
-          <section class="side-section">
-            <div class="section-title">
-              <h3>知识库</h3>
-              <button id="refresh-kb-btn" type="button" title="刷新">↻</button>
+          <aside class="inspector panel" aria-label="知识库和来源">
+            <div class="panel-tabs" role="tablist" aria-label="侧栏视图">
+              <button class="tab-button active" type="button" data-tab="sources">来源</button>
+              <button class="tab-button" type="button" data-tab="knowledge">知识库</button>
             </div>
-            <div id="knowledge-list" class="knowledge-list"></div>
-          </section>
 
-          <section class="side-section">
-            <div class="section-title">
-              <h3>来源引用</h3>
-            </div>
-            <div id="source-list" class="source-list"></div>
-          </section>
-        </aside>
+            <section class="tab-panel active" id="sources-panel">
+              <div class="panel-heading compact">
+                <div>
+                  <span class="section-kicker">Sources</span>
+                  <h3>来源引用</h3>
+                </div>
+              </div>
+              <div id="source-list" class="source-list"></div>
+            </section>
+
+            <section class="tab-panel" id="knowledge-panel">
+              <div class="panel-heading compact">
+                <div>
+                  <span class="section-kicker">Knowledge</span>
+                  <h3>知识库</h3>
+                </div>
+                <button class="ghost-button" id="refresh-kb-btn" type="button">刷新</button>
+              </div>
+              <div id="knowledge-list" class="knowledge-list"></div>
+
+              <form class="upload-form" id="upload-form">
+                <label for="document-name">文档名称</label>
+                <input id="document-name" name="file_name" type="text" value="新增售后规则.txt">
+
+                <label for="document-text">文档内容</label>
+                <textarea id="document-text" name="text" rows="5">物流异常超过48小时未更新时，客服应先核对订单号和收件地址，再联系承运商发起工单。若确认丢件，可为用户提交补发或退款流程。</textarea>
+
+                <button type="submit">入库演示文档</button>
+                <p id="upload-feedback" class="form-feedback" role="status"></p>
+              </form>
+            </section>
+          </aside>
+        </section>
       </main>
     </div>
     <script type="module" src="/app.js"></script>

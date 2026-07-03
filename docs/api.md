@@ -1,7 +1,7 @@
-# AI 智能客服系统接口文档（初版）
+# AI 智能客服系统接口文档（完善版）
 
-> 版本：0.1.0  
-> 状态：初版，可用于前后端联调  
+> 版本：1.0（完善版）  
+> 状态：已对齐当前 Python demo，可用于前后端联调和课程验收  
 > 本地服务地址：`http://localhost:3000`  
 > 目标网关地址：`http://localhost:8000`  
 > 数据格式：`application/json`，流式问答使用 `text/event-stream`
@@ -270,7 +270,7 @@ DELETE /api/user/{user_id}
 Authorization: Bearer <admin-token>
 ```
 
-说明：初版实现为禁用用户，正式版本保持软删除/禁用策略。
+说明：当前 demo 实现为禁用用户，正式版本保持软删除/禁用策略。
 
 ## 4. 知识库接口 /api/knowledge
 
@@ -526,7 +526,7 @@ DELETE /api/chat/sessions/{session_id}
 Authorization: Bearer <token>
 ```
 
-说明：初版实现为 `status = 0` 软删除。
+说明：当前 demo 实现为 `status = 0` 软删除。
 
 ## 6. AI 内部接口 /api/ai
 
@@ -610,7 +610,7 @@ Content-Type: application/json
 
 响应：默认 JSON；传 `?stream=1` 或 `Accept: text/event-stream` 时返回 SSE。
 
-## 7. 初版与正式版差异
+## 7. 当前 demo 与正式版差异
 
 | 项目 | 初始工程 | 正式开发目标 |
 | --- | --- | --- |

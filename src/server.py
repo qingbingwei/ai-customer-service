@@ -29,6 +29,7 @@ from src.service import (
     list_sessions,
     list_users,
     login_user,
+    now_iso,
     public_user,
     register_user,
     send_chat_message,
@@ -79,6 +80,7 @@ class AiCustomerServiceHandler(BaseHTTPRequestHandler):
                     {
                         "status": "ok",
                         "service": "ai-customer-service",
+                        "timestamp": now_iso(),
                     }
                 )
                 return
